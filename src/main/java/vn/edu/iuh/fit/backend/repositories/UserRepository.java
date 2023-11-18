@@ -6,4 +6,8 @@ import vn.edu.iuh.fit.backend.models.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
   Optional<User> findByEmailAndPasswordHash(String email, String passwordHash);
+
+//  User findByEmailAndPassword(String email,String passwordHash );
+  User findByEmail(String email);
 }
+
