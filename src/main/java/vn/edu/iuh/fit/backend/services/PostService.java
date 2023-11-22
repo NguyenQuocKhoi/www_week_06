@@ -11,8 +11,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.backend.models.Post;
+import vn.edu.iuh.fit.backend.models.PostComment;
 import vn.edu.iuh.fit.backend.repositories.PostRepository;
 
 @Service
@@ -44,4 +46,9 @@ public class PostService {
     Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
     return postRepository.findAll(pageable);//findFirst.../findTop...
   }
+
+  public Post findPostById(@Param("postId") long postId){
+    return postRepository.findPostById(postId);
+  }
+
 }

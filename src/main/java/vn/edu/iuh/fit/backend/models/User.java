@@ -78,4 +78,8 @@ public class User {
     this.intro = intro;
     this.profile = profile;
   }
+
+  public User(long id) {
+    this.id = id;
+  }
 }

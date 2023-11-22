@@ -15,19 +15,17 @@ public class UserService {
   @Autowired
   private UserRepository userRepository;
 
-  public User login(String email, String password) {
-    return userRepository.findByEmailAndPasswordHash(email, password).orElse(null);
-  }
+//  public User login(String email, String password) {
+//    return userRepository.findByEmailAndPasswordHash(email, password).orElse(null);
+//  }
 
   public User getUserById(long id) {
     return userRepository.findById(id).orElse(null);
   }
 
-  public boolean checkLogin(String email, String password) {
-    User user = userRepository.findByEmail(email);
-    if (user != null) {
-      return user.getPasswordHash().equals(password);
-    }
-    return false;
+  public boolean checkLogin(String email) {
+    userRepository.findByEmail(email);
+    return true;
   }
+
 }
