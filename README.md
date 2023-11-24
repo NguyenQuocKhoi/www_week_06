@@ -17,6 +17,4 @@ Màn hình Blog (chọn view more để xem chi tiết nội dung và các bình
 Màn hình chi tiết 
 ![image](https://github.com/NguyenQuocKhoi/www_week_06/assets/98084575/4dc7616a-2dc3-4455-b96d-7a1cae8d82ff)
 
-Màn hình thêm bài post 
 
-![image](https://github.com/NguyenQuocKhoi/www_week_06/assets/98084575/42daf9da-d3c1-4743-90cf-abff162ad228)
