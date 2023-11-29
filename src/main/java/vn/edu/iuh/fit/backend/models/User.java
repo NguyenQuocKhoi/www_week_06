@@ -53,6 +53,10 @@ public class User {
   @OneToMany(mappedBy = "author")
   private Set<Post> posts;
 
+  public User(Long id) {
+    this.id = id;
+  }
+
   public User(String firstName, String middleName, String lastName, String mobile, String email, String passwordHash, Instant registeredAt, Instant lastLogin, String intro, String profile) {
     this.firstName = firstName;
     this.middleName = middleName;

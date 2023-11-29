@@ -67,9 +67,11 @@ public class PostController {
   @PostMapping("/addPost")
   public String addPost(
       @ModelAttribute("post") Post post,
-      BindingResult result, Model model, String userId) {
-    Post post1 = new Post(null, post.getTitle(), post.getMetaTitle(), post.getSummary(),
+      BindingResult result, Model model) {
+    Post post1 = new Post(new User(3l), post.getTitle(), post.getMetaTitle(), post.getSummary(),
         post.isPublished(), Instant.now(), Instant.now(), Instant.now(), post.getContent());
+
+    postRepository.save(post1);
     return "redirect:/blog";
   }
 
