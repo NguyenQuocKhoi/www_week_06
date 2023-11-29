@@ -10,6 +10,10 @@ Sơ đồ database
 
 ![image](https://github.com/NguyenQuocKhoi/www_week_06/assets/98084575/1a937a75-b80f-44c4-9b70-8cd9a86ca701)
 
+Đăng kí 
+
+![image](https://github.com/NguyenQuocKhoi/www_week_06/assets/98084575/5a3f090f-3346-47fe-a915-b10507987cc3)
+
 Màn hình Blog (chọn view more để xem chi tiết nội dung và các bình luận cho bài post đó)
 
 ![image](https://github.com/NguyenQuocKhoi/www_week_06/assets/98084575/df867301-137c-4858-b855-1a223f8d8894)
