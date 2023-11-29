@@ -11,62 +11,49 @@ import jakarta.persistence.Table;
 import java.time.Instant;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Data
 @Entity
-@Table(name = "user")
-@Getter
-@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "user")
 public class User {
-
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column
-  private long id;
-
-  @Column(length = 50)
-  private String firstName;
-
-  @Column(length = 50)
-  private String middleName;
-
-  @Column(length = 50)
-  private String lastName;
-
+  private Long id;
   @Column(length = 15)
   private String mobile;
-
-  @Column(length = 50, unique = true)
-  private String email;
-
-  @Column(length = 32, nullable = false)
-  private String passwordHash;
-
-  @Column(nullable = false)
-  private Instant registeredAt;
-
-  @Column(nullable = false)
+  @Column(name = "last_login")
   private Instant lastLogin;
-
-  @Lob
-  @Column(columnDefinition = "text")
+  @Column(length = 50, name = "last_name")
+  private String lastName;
+  @Column(columnDefinition = "TINYTEXT")
   private String intro;
-
-  @Lob
-  @Column(columnDefinition = "text")
+  @Column(columnDefinition = "TEXT")
   private String profile;
-
-  @OneToMany(mappedBy = "author")
-  private Set<Post> posts = new LinkedHashSet<>();
-
+  @Column(name = "registered_at")
+  private Instant registeredAt;
+  @Column(name = "password_hash")
+  private String passwordHash;
+  @Column(length = 50, name = "middle_name")
+  private String middleName;
+  @Column(length = 50, name = "first_name")
+  private String firstName;
+  @Column(length = 50)
+  private String email;
   @OneToMany(mappedBy = "user")
-  private Set<PostComment> comments = new LinkedHashSet<>();
+  private Set<PostComment> postComments;
+  @OneToMany(mappedBy = "author")
+  private Set<Post> posts;
 
-  public User(String firstName, String middleName, String lastName, String mobile, String email,
-      String passwordHash, Instant registeredAt, Instant lastLogin, String intro, String profile) {
+  public User(String firstName, String middleName, String lastName, String mobile, String email, String passwordHash, Instant registeredAt, Instant lastLogin, String intro, String profile) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -77,9 +64,5 @@ public class User {
     this.lastLogin = lastLogin;
     this.intro = intro;
     this.profile = profile;
-  }
-
-  public User(long id) {
-    this.id = id;
   }
 }

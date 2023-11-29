@@ -38,7 +38,7 @@
     <div  th:each="comment : ${comments}" >
       <div>
         <div style="border: 1px solid; margin: 5px">
-        <h6 th:text="${'Tác giả: '+ comment.getUser().getFirstName()}" style="margin-left: 15px; margin-top: 5px"></h6>
+        <h6 th:text="${'Tác giả: '+ comment.getUser().getFirstName()+' '+comment.getUser().getLastName()}" style="margin-left: 15px; margin-top: 5px"></h6>
         <p th:text="${'Nội dung: '+comment.getContent()}" style="margin-left: 15px"></p>
           <h6 th:text="${comment.getCreatedAt()}" style="margin-left: 1089px;"></h6>
         </div>

@@ -30,7 +30,7 @@ public class Post {
   private long id;
 
   @ManyToOne
-  @JoinColumn(name = "authorId", nullable = false)
+  @JoinColumn(name = "authorId")
   private User author;
 
   @ManyToOne
@@ -70,6 +70,19 @@ public class Post {
   public Post(User author, Post parent, String title, String metaTitle, String summary, Boolean published, Instant createdAt, Instant updatedAt, Instant publishedAt, String content) {
     this.author = author;
     this.parent = parent;
+    this.title = title;
+    this.metaTitle = metaTitle;
+    this.summary = summary;
+    this.published = published;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.publishedAt = publishedAt;
+    this.content = content;
+  }
+
+  public Post(User author, String title, String metaTitle, String summary, boolean published,
+      Instant createdAt, Instant updatedAt, Instant publishedAt, String content) {
+    this.author = author;
     this.title = title;
     this.metaTitle = metaTitle;
     this.summary = summary;

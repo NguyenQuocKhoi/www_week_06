@@ -23,6 +23,7 @@ import vn.edu.iuh.fit.backend.services.UserService;
 
 @Controller
 public class PostController {
+
   @Autowired
   private PostRepository postRepository;
 
@@ -33,6 +34,7 @@ public class PostController {
 
   @Autowired
   private UserRepository userRepository;
+
   @GetMapping("/blog")
   public String showBlogListPaging(Model model,
       @RequestParam("page") Optional<Integer> page,
@@ -58,18 +60,25 @@ public class PostController {
   @GetMapping("/show-add-form")
   public String add(Model model) {
     Post post = new Post();
-    model.addAttribute("post",post);
+    model.addAttribute("post", post);
     return "add-form-post";
   }
-  @PostMapping("/add")
+
+  @PostMapping("/addPost")
   public String addPost(
-      @ModelAttribute("post") Post post, @ModelAttribute("user") User user,
+      @ModelAttribute("post") Post post,
       BindingResult result, Model model, String userId) {
-    long id =  Long.parseLong(userId);
-   User user1 = userRepository.findUserById(id);
-    post.setCreatedAt(Instant.now());
-    post.setAuthor(user1);
-    postRepository.save(post);
+    Post post1 = new Post(null, post.getTitle(), post.getMetaTitle(), post.getSummary(),
+        post.isPublished(), Instant.now(), Instant.now(), Instant.now(), post.getContent());
     return "redirect:/blog";
   }
+
+//  @PostMapping("/add")
+//  public String addPost(@ModelAttribute("post") Post post, String authorId) {
+//    post.setCreatedAt(Instant.now());
+//    long authorID = Long.parseLong(authorId);
+//    post.setAuthor(User.builder().id(authorID).build());
+//    postRepository.save(post);
+//    return "redirect:/blog";
+//  }
 }
